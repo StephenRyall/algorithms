@@ -8,7 +8,7 @@ const sortInsert = (n, arr) => {
             console.log(...holdArr)
         }
         else if (arr[i] <= insrtNum) {
-            let insertedArr = holdArr.splice(i+1, 0, insrtNum)
+            let insertedArr = holdArr.splice(i + 1, 0, insrtNum)
             console.log(...holdArr)
             break;
         }
@@ -19,7 +19,22 @@ const sortInsert = (n, arr) => {
             break;
         }
     }
-   
+
 }
 
-sortInsert(5, [2, 4, 6, 8, 3])
+
+const sortInsertMultiple = (n, arr) => {
+    let storage
+    for (let i = 1; i < n; i++) {
+        storage = arr.splice(i, 1)[0]
+        for (let j = i; j >= 0; j--) {
+            if (storage > arr[j-1] || j === 0) {
+                arr.splice(j, 0, storage)
+                break
+            }
+        }
+        console.log(arr.join(' '))
+    }
+}
+
+sortInsertMultiple(6, [1, 4, 3, 5, 6, 2 ])
